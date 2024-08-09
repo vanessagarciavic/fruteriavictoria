@@ -339,7 +339,7 @@ def set_metodo():
 @app.route('/pedido_exitoso')
 @login_required
 def pedido_exitoso():
-    return render_template('usuario_comprador/menu/pedidos.html')
+    return render_template('usuario_comprador/pedido_hecho.html')
 
 
 @app.route('/mis_pedidos')

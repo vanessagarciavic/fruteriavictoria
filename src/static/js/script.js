@@ -226,3 +226,13 @@ window.onclick = function(event) {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    var successToast = document.getElementById('funcionandoToast');
+    var toast = new bootstrap.Toast(successToast, {
+      animation: true, // Habilita animación
+      autohide: true,  // Oculta automáticamente después de un tiempo
+      delay: 5000       // Duración en milisegundos (5000 ms = 5 segundos)
+    });
+    toast.show();
+  });

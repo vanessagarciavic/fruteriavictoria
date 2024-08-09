@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
 {% endblock %}
 {% block body %}
-        
+        <div class="div-car">
+            <p class="ti-car">Carrito</p>
+        </div>
         <div class="carrito-centro">
                 {% if productos %}
                     <ul>
@@ -37,7 +39,10 @@
                 
                     
                 {% else %}
-                    <p>No hay productos en el carrito.</p>
+                <br>
+                <br>
+                    <img class="imgcar" src="{{ url_for('static', filename='img/carrito-vacio.png') }}" >
+                    <p class="sin_productos">Vacio.</p>
                 {% endif %}
         </div>
 
