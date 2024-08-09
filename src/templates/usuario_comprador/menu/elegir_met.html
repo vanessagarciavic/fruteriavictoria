@@ -27,7 +27,7 @@
             <td class="casillas">{{ metodo[1] }}</td>
             <td class="casillas">
                 <form action="{{ url_for('set_metodo') }}" method="POST">
-                    <input type="hidden" name="id_metodo" value="{{ nume_direccion[0] }}">
+                    <input type="hidden" name="id_metodo" value="{{ metodo[0] }}">
                     <button type="submit" class="btn btn-light">ELEGIR</button>
                 </form>            
             </td>
@@ -35,7 +35,4 @@
         {% endfor %}
     </table>
 
-    <form action="{{ url_for('realizar_compra') }}" method="POST">
-        <button type="button" class="btn btn-success">Realizar compra</button>
-    </form>
 {% endblock %}

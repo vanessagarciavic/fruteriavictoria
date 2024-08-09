@@ -25,7 +25,6 @@
             <th class="casillas">Ciudad</th>
             <th class="casillas">Acciones</th>
         </tr>                
-        {% for nume_direccion in nume_direcciones %}
         {% for direccion in direcciones %}
         <tr>
             <td class="casillas">{{ direccion[0] }}</td>
@@ -35,16 +34,12 @@
             <td class="casillas">{{ direccion[4] }}</td>
             <td class="casillas">
                 <form action="{{ url_for('set_direccion') }}" method="POST">
-                    <input type="hidden" name="id_direccion" value="{{ nume_direccion[0] }}">
+                    <input type="hidden" name="id_direccion" value="{{ direccion[0] }}">
                     <button type="submit" class="btn btn-light">ELEGIR</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
-        {% endfor %}
     </table>
-<a style="text-decoration: none;" href="{{ url_for('elegir_met') }}">
-    <button type="button" class="btn btn-success">Elegir Pago</button>
-</a>
                                                 
 {% endblock %}

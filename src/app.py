@@ -243,6 +243,7 @@ def carrito2():
     return render_template('usuario_comprador/carrito.html', productos=productos_lista, total=total, gramos=gramos_totales)
 
 @app.route('/agregar_carrito/<int:producto_id>')
+@login_required
 def agregar_carrito(producto_id):
     if 'carrito' not in session:
         session['carrito'] = []
@@ -251,60 +252,59 @@ def agregar_carrito(producto_id):
     return redirect(url_for('carrito2'))
 
 @app.route('/realizar-compra', methods=['POST'])
-
+@login_required
 def realizar_compra():
+    print('funciona')
     if 'carrito' in session and 'id_direccion' in session and 'id_metodo' in session:
         carrito = session['carrito']
         id_direccion = session['id_direccion']
         id_metodo = session['id_metodo']
         total = 0
         cursor = db.connection.cursor()
-        
+        print('funciona')
         # Calcular el total del pedido
         for item in carrito:
             cursor.execute("SELECT precio FROM productos WHERE id = %s", (item,))
             precio = cursor.fetchone()[0]
             total += precio
-
+        print('funciona')
         # Crear el pedido
         cursor.execute("INSERT INTO pedidos (usuario_id, direccion_id, metodo_id, total) VALUES (%s, %s, %s, %s)", (current_user.num_usuario, id_direccion, id_metodo, total))
         pedido_id = cursor.lastrowid
-
+        print('funciona')
         # Insertar los detalles del pedido
         for item in carrito:
             cursor.execute("SELECT precio FROM productos WHERE id = %s", (item,))
             precio = cursor.fetchone()[0]
             cursor.execute("INSERT INTO detalle_pedidos (pedido_id, producto_id, cantidad, precio_unitario) VALUES (%s, %s, %s, %s)",
                            (pedido_id, item, 1, precio))
-
+        print('funciona')
         db.connection.commit()
         session.pop('carrito', None)
         session.pop('id_direccion', None)
         session.pop('id_metodo', None)
         return redirect(url_for('pedido_exitoso'))
-
+    
+    print('funciona')
     return redirect(url_for('carrito2'))
-
+                         
 @app.route('/elegir-dir')
 @login_required
 def elegir_dir():
     if 'direccion' not in session:
         session['direccion'] = []
     direcciones = []
-    nume_direcciones = []
     cursor = db.connection.cursor()
     cursor.execute("SELECT id, calle, num, colonia, ciudad, num_usuario FROM direcciones WHERE num_usuario = %s", (current_user.num_usuario,))
     rows = cursor.fetchall()
     num_direccion = 1
     for row in rows:
-            direccion = (num_direccion, row[1], row[2], row[3], row[4])
+            direccion = (row[0], row[1], row[2], row[3], row[4])
             direcciones.append(direccion)
             num_direccion += 1
-    for row in rows:
-            nume_direccion = (row[0])
-            nume_direcciones.append(nume_direccion)
 
-    return render_template('usuario_comprador/menu/elegir_dir.html', direcciones=direcciones, nume_direcciones=nume_direcciones)
+
+    return render_template('usuario_comprador/menu/elegir_dir.html', direcciones=direcciones)
 
 
 @app.route('/elegir-met')
@@ -313,21 +313,16 @@ def elegir_met():
     if 'direccion' not in session:
         session['direccion'] = []
     metodos = []
-    nume_tarjetas = []
     cursor = db.connection.cursor()
     cursor.execute("SELECT id, num_tarjeta FROM metodos_pago WHERE num_usuario = %s", (current_user.num_usuario,))
     rows = cursor.fetchall()
     num_tarjeta = 1
     for row in rows:
-            metodo = (num_tarjeta, row[1])
+            metodo = (row[0], row[1])
             metodos.append(metodo)
             num_tarjeta += 1
-    for row in rows:
-            nume_tarjeta = (row[0])
-            nume_tarjetas.append(nume_tarjeta)
 
-
-    return render_template('usuario_comprador/menu/elegir_dirmet.html', metodos=metodos, nume_tarjetas=nume_tarjetas)
+    return render_template('usuario_comprador/menu/elegir_met.html', metodos=metodos)
 
 @app.route('/set_direccion', methods=['POST'])
 @login_required
@@ -341,6 +336,7 @@ def set_direccion():
 def set_metodo():
     id_metodo = request.form.get('id_metodo')
     session['id_metodo'] = id_metodo
+    print('funciona')
     return redirect(url_for('realizar_compra'))
 
 @app.route('/pedido_exitoso')
@@ -366,6 +362,7 @@ def mis_pedidos():
     return render_template('usuario_comprador/menu/pedidos.html', pedidos=pedidos)
 
 @app.route('/delete-ped/<string:id_ped>')
+@login_required
 def delete_ped(id_ped):
     id_pedidos = []
     cursor = db.connection.cursor()
@@ -422,6 +419,7 @@ def direcciones():
 
 
 @app.route('/agregar-direccion', methods=['GET', 'POST'])
+@login_required
 def agregar_direccion():
     if request.method == 'POST':
         calle = request.form['calle']
