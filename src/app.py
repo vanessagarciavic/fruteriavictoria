@@ -29,7 +29,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'vanepotter19@gmail.com'
-app.config['MAIL_PASSWORD'] = 'dbjq aojm vnfn vhpf'  # Contraseña de aplicación (mejor usar variables de entorno)
+app.config['MAIL_PASSWORD'] = 'dbjq aojm vnfn vhpf'  
 
 mail = Mail(app)
 
@@ -84,8 +84,7 @@ def contactanos():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-       # correo = request.form['correo']
-        # contraseña = request.form['contraseña']
+
         usuarios = User(request.form['correo'], request.form['contraseña'], 0)
         logged_usuarios = ModelUser.login(db, usuarios)
         if logged_usuarios is not None:
@@ -110,7 +109,6 @@ def registro():
         correo = request.form['correo']
         contraseña = generate_password_hash(request.form['contraseña'])
 
-        # Código para insertar el nuevo usuario en la base de datos
         cursor = db.connection.cursor()
         sql = """INSERT INTO usuarios (nombre, apellido, num_tel, correo, contraseña) 
                  VALUES (%s, %s, %s, %s, %s)"""
@@ -261,15 +259,12 @@ def realizar_compra():
         id_metodo = session['id_metodo']
         total = 0
         cursor = db.connection.cursor()
-            # Calcular el total del pedido
         for item in carrito:
             cursor.execute("SELECT precio FROM productos WHERE id = %s", (item,))
             precio = cursor.fetchone()[0]
             total += precio
-            # Crear el pedido
         cursor.execute("INSERT INTO pedidos (usuario_id, direccion_id, metodo_id, total) VALUES (%s, %s, %s, %s)", (current_user.num_usuario, id_direccion, id_metodo, total))
         pedido_id = cursor.lastrowid
-            # Insertar los detalles del pedido
         for item in carrito:
             cursor.execute("SELECT precio FROM productos WHERE id = %s", (item,))
             precio = cursor.fetchone()[0]
@@ -424,7 +419,6 @@ def agregar_direccion():
         colonia = request.form['colonia']
         ciudad = request.form['ciudad']
 
-        # Código para insertar el nuevo usuario en la base de datos
         cursor = db.connection.cursor()
         sql = """INSERT INTO direcciones (calle, num, colonia, ciudad, num_usuario) 
                  VALUES (%s, %s, %s, %s, %s)"""
