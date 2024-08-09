@@ -138,8 +138,13 @@ body {
     font-family: "Yeseva One", serif;
     font-weight: 1000;
     font-style: normal;
-    font-size: 30px;
-    color: #ffffff;
+    font-size: 40px;
+    color: #4c926b;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 /* Div con imagen en movimiento */
 /* Cartas de productos */
@@ -567,4 +572,20 @@ button{
 .imgcar{
     height: 80px;
     width: 80px;
+}
+.hist{
+    height: auto;
+    width: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.ini{
+    height: auto;
+    width: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
