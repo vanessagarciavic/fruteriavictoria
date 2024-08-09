@@ -449,16 +449,16 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff; /* Fondo blanco opcional para los divs */
-    border: 1px solid #ddd; /* Borde opcional */
-    border-radius: 8px; /* Esquinas redondeadas opcionales */
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
 }
 
 .menu > div img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que las imágenes cubran completamente el contenedor */
-    border-radius: 8px; /* Esquinas redondeadas opcionales */
+    object-fit: cover; 
+    border-radius: 8px; 
 }
 .centro-log2{
     height: 550px;
