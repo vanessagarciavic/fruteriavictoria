@@ -1,0 +1,61 @@
+{% extends "base1_1.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+<!-- productos -->
+<div class="tab-bar">
+    <div class="nav">
+        <a class="nav-link active" href="{{ url_for('fruta2') }}">Frutas</a>
+        <a class="nav-link" href="{{ url_for('verdura2') }}">Verduras</a>
+        <a class="nav-link" href="{{ url_for('chiles2') }}">Chiles</a>
+        <a class="nav-link" href="{{ url_for('otros2') }}">Otros</a>
+    </div>
+</div>
+<br>
+<div class="container my-5">
+    <div class="row">
+        <!-- Producto 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/arroz.jpg') }}" class="card-img-top" alt="Producto 1">
+                <div class="card-body">
+                    <h5 class="card-title">Arroz</h5>
+                    <p class="card-text">$10.00</p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/jamaica.jpg') }}" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Jamaica</h5>
+                    <p class="card-text">$15.00</p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/miel.jpg') }}" class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Miel</h5>
+                    <p class="card-text">$20.00</p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

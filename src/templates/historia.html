@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+    <!-- titulo -->
+    <p class="titulo">HISTORIA</p>
+    <!-- titulo -->
+
+
+    <!-- carrusel -->
+    <br>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="float: left; margin-left: 20px;">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/lugar1.jpg') }}" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/lugar2.jpg') }}" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/lugar3.jpg') }}" class="d-block w-100">
+            </div>
+        </div>
+    </div>
+    <!-- carrusel -->
+
+
+    <!-- Texto #1 -->
+    <br>
+    <br>
+    <aside>
+        <p class="subtitulo">Desde 1979, una tradición de calidad y frescura</p>
+        La historia de Frutería Hermanos Victoria comienza en 1979, cuando los hermanos Victoria, motivados por su pasión por la agricultura y la frescura de los productos naturales, fundaron su primera tienda en el corazón de la ciudad. Con un enfoque en ofrecer productos de la más alta calidad, la frutería rápidamente se convirtió en un referente para las familias locales.
+        Desde aquellos primeros días, nuestra misión ha sido clara: brindar a nuestros clientes frutas y verduras frescas, seleccionadas con el mismo cuidado y dedicación que si fueran para nuestra propia familia. Esta dedicación a la calidad y al servicio nos ha permitido crecer y expandir nuestros horizontes, llegando a nuevas comunidades y mercados.
+    </aside>
+    <!-- Texto #1 -->
+
+
+    <!-- cuerpo -->
+    <!-- Mapa -->
+   
+    <!-- Mapa -->
+    <!-- Graficas Chart -->
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-sm-12 col-md-6 order-md-2">
+                <div id="chart1" class="chart"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-md-1">
+              <br>
+              <br>
+              <br>
+              <br>  
+              <p class="textosg">En Frutería Hermanos Victoria, nos enorgullecemos de ofrecer la mejor relación calidad-precio del mercado. La siguiente gráfica muestra cómo mantenemos un equilibrio excepcional entre la calidad y el precio de nuestros productos a lo largo de la semana, asegurando que nuestros clientes siempre reciban lo mejor.</p>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-sm-12 col-md-6 order-md-1">
+                <div id="chart2" class="chart"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-md-2">
+              <br>
+              <br>
+              <br>
+              <br>  
+              <p class="textosg" style="text-align: right;">Cada año, llegamos a más colonias con el propósito de que más personas nos conozcan. Nos esforzamos por llevar la frescura y calidad de Frutería Hermanos Victoria a cada vez más hogares, asegurando que cada familia pueda disfrutar de nuestros productos excepcionales. Nuestro objetivo es seguir expandiéndonos, manteniendo siempre el compromiso con la excelencia que nos caracteriza.</p>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-sm-12 col-md-6 order-md-2">
+                <div id="chart3" class="chart"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-md-1">
+              <br>
+              <br>
+              <br>
+              <br>  
+              <p class="textosg">Cada año, llegamos a más familias, llevando la frescura y calidad de nuestros productos a nuevos hogares. Nuestro compromiso con la excelencia nos permite expandir continuamente nuestra red de clientes satisfechos, quienes confían en Frutería Hermanos Victoria para sus necesidades diarias de frutas y verduras.</p>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-sm-12 col-md-6 order-md-1">
+                <div id="chart4" class="chart"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-md-2" style="text-align: right;">
+              <br>
+              <br>
+              <br>
+              <br>  
+              <p class="textosg">Nuestra expansión ha sido notable, llegando a tres municipios aledaños y logrando una fuerte presencia en cada uno de ellos. Contamos con una vasta cantidad de clientes fieles que confían en la calidad y frescura de nuestros productos en cada zona. A continuación, presentamos una gráfica que ilustra la distribución de nuestra clientela:</p>
+            </div>
+        </div>
+    </div>
+    <!-- Graficas Chart -->
+
+
+    <!-- cuerpo -->
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+        <br>
+        <a href="{{ url_for('menuu') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+    
+        <p class="titulos">PEDIDOS</p>
+      
+        <br>
+            <table class="tab_pedidos">
+                <tr>
+                    <th class="casillas">Numero Pedido</th>
+                    <th class="casillas">Fecha</th>
+                    <th class="casillas">Total</th>
+                    <th class="casillas">Acciones</th>
+                </tr>                     
+                {% for pedido in pedidos %}
+                <tr>
+                    <td class="casillas">{{ pedido[0] }}</td>
+                    <td class="casillas">{{ pedido[1] }}</td>
+                    <td class="casillas">$ {{ pedido[2] }}</td>
+                    <td class="casillas">
+                        <button class="eliminar"><a style="text-decoration: none; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; font-style: normal;" href="{{ url_for('delete_ped', id_ped=pedido[0]) }}">ELIMINAR</a></button>
+                    </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        
+   
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base2.html" %}
+
+{% block title %}
+    Inicio de Sesion
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+<!-- boton regresar -->
+<a href="{{ url_for('login') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+<!-- boton regresar -->
+
+
+<!-- recuadro del centro -->
+<div class="centro-log1">
+        <!-- imagen recuadro izquierdo -->
+        <div class="ima-log1">
+            <img src="{{ url_for('static', filename='img/img-reg1.jpg') }}" alt="">
+        </div>
+        <!-- imagen recuadro izquierdo -->
+
+
+        <!-- recuadro para formulario de inicio -->
+        <div class="form-log1">
+            <!-- imagen logo de formulario -->
+            <img src="{{ url_for('static', filename='img/logo-login.png') }}" class="img-log">
+            <!-- imagen logo de formulario -->
+             <!-- formulario inicio -->
+            <div class="form-log2">
+                <form action="/registro" method="post">
+                    <p class="text-sesion">Registro</p>
+                    <label class="tnombre">Nombre</label>
+                    <br>
+                    <input type="text" class="nombre" name="nombre">
+                    <br>
+                    <label class="tapellido">Apellido</label>
+                    <br>
+                    <input type="text" class="apellido" name="apellido">
+                    <br>
+                    <label class="tnumtel">Numero Telefonico</label>
+                    <br>
+                    <input type="text" class="numtel" name="numtel">
+                    <br>
+                    <label class="tcorreo">Correo</label>
+                    <br>
+                    <input type="text" class="correo" name="correo">
+                    <br>
+                    <label class="tcontraseña">Contraseña</label>
+                    <br>
+                    <input type="text" class="contraseña" name="contraseña">
+                    <br>                   
+                    <button class="login">REGISTRAR</button>
+                </form>
+            </div>
+            <!-- formulario inicio -->
+        </div>
+        <!-- recuadro para formulario de inicio -->
+</div>
+<!-- recuadro del centro -->
+
+{% endblock %}

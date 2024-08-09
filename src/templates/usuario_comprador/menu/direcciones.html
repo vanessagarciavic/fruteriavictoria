@@ -1,0 +1,43 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+        <br>
+        <a href="{{ url_for('menuu') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+        <br>
+            
+        <p class="titulos">DIRECCIONES</p>
+        <br>
+        <br>
+            <table class="tab_pedidos">
+                <tr>
+                    <th class="casillas">ID</th>
+                    <th class="casillas">Calle</th>
+                    <th class="casillas">Numero</th>
+                    <th class="casillas">Colonia</th>
+                    <th class="casillas">Ciudad</th>
+                    <th class="casillas">Acciones</th>
+                </tr>                     
+                {% for direccion in direcciones %}
+                <tr>
+                    <td class="casillas">{{ direccion[0] }}</td>
+                    <td class="casillas">{{ direccion[1] }}</td>
+                    <td class="casillas">{{ direccion[2] }}</td>
+                    <td class="casillas">{{ direccion[3] }}</td>
+                    <td class="casillas">{{ direccion[4] }}</td>
+                    <td class="casillas">
+                        <a style="text-decoration: none; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; font-style: normal;" href="{{ url_for('delete_dir', id_dir=direccion[0]) }}"><button class="eliminar">ELIMINAR</button></a>
+                        <a style="text-decoration: none; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; font-style: normal;" href="{{ url_for('editar_dir', id=direccion[0]) }}"><button class="editar">EDITAR</button></a>
+                    </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button class="agregar"><a style="text-decoration: none; color: white; font-family: 'Poppins', sans-serif; font-weight: 500; font-style: normal;" href="{{ url_for('agregar_direccion') }}">AGREGAR DIRECCION</a></button>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+<!-- cuerpo -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+            <i class="fa-regular fa-lemon fa-bounce" style="color: #72b365;"></i>
+            <strong class="me-auto">Frutería Hermanos Victoria</strong>
+            <small>Ahora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Tu mensaje nos ha llegado, nos contactaremos contigo pronto.
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2>Contáctanos</h2>
+    <form action="{{ url_for('contactanos') }}" method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+<!-- cuerpo -->
+
+{% endblock %}
+<script>
+    function showToast() {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            var toastEl = document.getElementById('successToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    }
+    window.onload = showToast;
+</script>

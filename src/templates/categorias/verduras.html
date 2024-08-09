@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+<!-- productos -->
+<div class="tab-bar">
+    <div class="nav">
+        <a class="nav-link active" href="{{ url_for('fruta') }}">Frutas</a>
+        <a class="nav-link" href="{{ url_for('verdura') }}">Verduras</a>
+        <a class="nav-link" href="{{ url_for('chiles') }}">Chiles</a>
+        <a class="nav-link" href="{{ url_for('otros') }}">Otros</a>
+    </div>
+</div>
+<br>
+<div class="container my-5">
+    <div class="row">
+        <!-- Producto 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/jitomate.jpg') }}" class="card-img-top" alt="Producto 1">
+                <div class="card-body">
+                    <h5 class="card-title">Jitomate</h5>
+                    <p class="card-text">$10.00/kg</p>
+                </div>
+            </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/papa.jpg') }}" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Papa</h5>
+                    <p class="card-text">$15.00/kg</p>
+                </div>
+            </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="{{ url_for('static', filename='img/zanahoria.jpg') }}" class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Zanahoria</h5>
+                    <p class="card-text">$20.00/kg</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

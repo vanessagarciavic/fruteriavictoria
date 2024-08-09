@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+<!-- carrusel -->
+<br>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='img/im1.jpg') }}" class="d-block w-100" >
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='img/im2.jpg') }}" class="d-block w-100" >
+      </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- cuerpo -->
+<br>
+<br>
+<img src="{{ url_for('static', filename='vid/vid2.gif') }}" height="300px" width="600px" align="right" class="im3">
+<div class="tex1">
+    <br>
+<p>Encuentra las mejores frutas y verduras del Estado de Mexico,</p>
+<p>ahora sin salir de casa, ojea nuestro catalgo</p>
+<p>y haz tu pedido!</p>
+</div>
+
+{% endblock %}

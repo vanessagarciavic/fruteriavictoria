@@ -1,0 +1,50 @@
+{% extends "base1_1.html" %}
+
+{% block title %}
+    Carrito
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+        
+<br>
+<a href="{{ url_for('menuu') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+<br>
+    
+<p class="titulos">DIRECCIONES</p>
+<br>
+<br>
+    <table class="tab_pedidos">
+        <tr>
+            <th class="casillas">ID</th>
+            <th class="casillas">Calle</th>
+            <th class="casillas">Numero</th>
+            <th class="casillas">Colonia</th>
+            <th class="casillas">Ciudad</th>
+            <th class="casillas">Acciones</th>
+        </tr>                
+        {% for nume_direccion in nume_direcciones %}
+        {% for direccion in direcciones %}
+        <tr>
+            <td class="casillas">{{ direccion[0] }}</td>
+            <td class="casillas">{{ direccion[1] }}</td>
+            <td class="casillas">{{ direccion[2] }}</td>
+            <td class="casillas">{{ direccion[3] }}</td>
+            <td class="casillas">{{ direccion[4] }}</td>
+            <td class="casillas">
+                <form action="{{ url_for('set_direccion') }}" method="POST">
+                    <input type="hidden" name="id_direccion" value="{{ nume_direccion[0] }}">
+                    <button type="submit" class="btn btn-light">ELEGIR</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+<a style="text-decoration: none;" href="{{ url_for('elegir_met') }}">
+    <button type="button" class="btn btn-success">Elegir Pago</button>
+</a>
+                                                
+{% endblock %}

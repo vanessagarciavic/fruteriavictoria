@@ -1,0 +1,45 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+<a href="{{ url_for('metodos_pago') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+
+    <div class="centro-log2">
+        <form action="{{ url_for('agregar_metodo') }}" method="post">
+            <p class="text-sesion1">Agregar Tarjeta</p>
+            <label class="tnombre1" for="calle">Numero Tarjeta:</label>
+            <br>
+            <input type="text" class="nombre" id="nombre" name="num_tarjeta">
+            <br>
+            <br>
+            <label class="tapellido1" for="num">Nombre:</label>
+            <br>
+            <input type="text" class="nombre" id="nombre" name="nombre">
+            <br>
+            <br>
+            <label class="tnumtel1" for="colonia">Apellido:</label>
+            <br>
+            <input type="text" class="nombre" id="nombre"name="apellido">
+            <br>
+            <br>
+            <label class="tcorreo1" for="ciudad">Fecha Expiracion:</label>
+            <br>
+            <input type="text" class="nombre" id="nombre" name="fecha_exp">
+            <br>
+            <br>
+            <label class="tcorreo1" for="ciudad">CVV:</label>
+            <br>
+            <input type="number" class="nombre" id="nombre" name="cvv">
+            <br>
+            <br>
+            
+            <button class="login" type="submit">AGREGAR</button>
+        </form>
+    </div>
+ {% endblock %}

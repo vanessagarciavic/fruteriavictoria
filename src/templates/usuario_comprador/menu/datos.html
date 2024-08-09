@@ -1,0 +1,45 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+
+<a href="{{ url_for('menuu') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+
+    <div class="centro-log2">
+        <form action="{{ url_for('mis_datos') }}" method="post">
+            <p class="text-sesion1">Actualizar Datos</p>
+            <label class="tnombre1" for="nombre">Nombre:</label>
+            <br>
+            <input type="text" class="nombre" id="nombre" name="nombre" value="{{ usuario.nombre }}">
+            <br>
+            <br>
+            <label class="tapellido1" for="apellido">Apellido:</label>
+            <br>
+            <input type="text" class="apellido" id="apellido" name="apellido" value="{{ usuario.apellido }}">
+            <br>
+            <br>
+            <label class="tnumtel1" for="numtel">Número de Teléfono:</label>
+            <br>
+            <input type="text" class="numtel" id="numtel" name="numtel" value="{{ usuario.num_tel }}">
+            <br>
+            <br>
+            <label class="tcorreo1" for="correo">Correo:</label>
+            <br>
+            <input type="email" class="correo" id="correo" name="correo" value="{{ usuario.correo }}">
+            <br>
+            <br>
+            <label class="tcontraseña1" for="contraseña">Contraseña:</label>
+            <br>
+            <input type="password" class="contraseña" id="contraseña" name="contraseña">
+            <br>
+            <br>
+            <button class="login" type="submit">Actualizar</button>
+        </form>
+    </div>
+{% endblock %}

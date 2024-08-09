@@ -1,0 +1,44 @@
+{% extends "base1_1.html" %}
+
+{% block title %}
+    Carrito
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+        
+        <div class="carrito-centro">
+                {% if productos %}
+                    <ul>
+                        
+                            <table class="tab-car">
+                                <tr>
+                                    <th>Productos</th>
+                                    <th >Precio</th>
+                                    <th>Gramos</th>
+                                </tr>
+                                {% for producto in productos %}
+                                <tr>
+                                    <td>{{ producto['nombre'] }}</td>
+                                    <td>$ {{ producto['total_precio'] }} .00</td>
+                                    <td>{{ producto['gramos'] }} g</td>
+                                </tr> 
+                                {% endfor %}
+                            </table>
+                            <div class="total-car">
+                                <p class="car">Total: $ {{ total }} .00</p>
+                                <p class="car">Total gramos: {{ gramos }} g</p>
+                            </div>
+                            <a style="text-decoration: none;" href="{{ url_for('elegir_dir') }}"><button type="button" class="btn btn-success">Pagar</button></a>
+                            <a style="text-decoration: none;" href="{{ url_for('productos2') }}" <button type="button" class="btn btn-light">Seguir comprando</button></a>
+                    </ul>
+                
+                    
+                {% else %}
+                    <p>No hay productos en el carrito.</p>
+                {% endif %}
+        </div>
+
+{% endblock %}

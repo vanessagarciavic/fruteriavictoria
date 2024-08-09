@@ -1,0 +1,28 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+    <p class="mensaje-bienvenida"> Bienvenido, {{ current_user.nombre }}</p>
+    
+    <div class="menu">
+            <div class="datos">
+            <a href="{{ url_for('mis_datos') }}"><img src="{{ url_for('static', filename='img/datos.jpg') }}" class="menu-1"></a>
+            </div>
+            <div class="pedidos">
+            <a href="{{ url_for('mis_pedidos') }}"><img src="{{ url_for('static', filename='img/pedidos.jpg') }}" class="menu-2"></a>
+            </div>
+            <div class="direcciones">
+            <a href="{{ url_for('direcciones') }}"><img src="{{ url_for('static', filename='img/direcciones.jpg') }}" class="menu-3"></a>
+            </div>
+            <div class="metodos">
+            <a href="{{ url_for('metodos_pago') }}"><img src="{{ url_for('static', filename='img/metodos.jpg') }}" class="menu-4"></a>
+            </div>
+    </div>
+
+{% endblock %}

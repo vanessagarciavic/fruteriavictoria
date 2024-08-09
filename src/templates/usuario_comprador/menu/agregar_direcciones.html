@@ -1,0 +1,40 @@
+{% extends "base3.html" %}
+
+{% block title %}
+    Fruteria Hermanos Victoria
+{% endblock %}
+
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+{% endblock %}
+{% block body %}
+<a href="{{ url_for('direcciones') }}"><button type="button" class="btn btn-success" style="margin: 30px;">Regresar</button></a>
+
+    <div class="centro-log2">
+        <form action="{{ url_for('agregar_direccion') }}" method="post">
+            <p class="text-sesion1">Agregar direccion</p>
+            <label class="tnombre1" for="calle">Calle:</label>
+            <br>
+            <input type="text" class="calle" id="calle" name="calle">
+            <br>
+            <br>
+            <label class="tapellido1" for="num">Num:</label>
+            <br>
+            <input type="text" class="num" id="num" name="num">
+            <br>
+            <br>
+            <label class="tnumtel1" for="colonia">Colonia:</label>
+            <br>
+            <input type="text" class="colonia" id="colonia" name="colonia">
+            <br>
+            <br>
+            <label class="tcorreo1" for="ciudad">Ciudad:</label>
+            <br>
+            <input type="text" class="ciudad" id="ciudad" name="ciudad">
+            <br>
+            <br>
+            
+            <button class="login" type="submit">AGREGAR</button>
+        </form>
+    </div>
+ {% endblock %}
